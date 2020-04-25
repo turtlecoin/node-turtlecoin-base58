@@ -1,6 +1,6 @@
 {
   "name": "turtlecoin-base58",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "TurtleCoin Base58",
   "types": "dist/base58.d.ts",
   "main": "dist/base58.js",
@@ -33,7 +33,7 @@
     "big-integer": "^1.6.48"
   },
   "devDependencies": {
-    "@types/node": "^13.13.0",
+    "@types/node": "^13.13.2",
     "mocha": "^7.1.1",
     "tslint": "^5.20.1",
     "typedoc": "^0.16.11",
