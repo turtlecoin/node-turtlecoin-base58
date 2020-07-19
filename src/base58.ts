@@ -33,12 +33,12 @@ const encodedBlockSizes: number[] = [0, 2, 3, 5, 6, 7, 9, 10, 11];
 /**
  * @ignore
  */
-const fullBlockSize: number = 8;
+const fullBlockSize = 8;
 
 /**
  * @ignore
  */
-const fullEncodedBlockSize: number = 11;
+const fullEncodedBlockSize = 11;
 
 /**
  * @ignore
@@ -54,7 +54,7 @@ export class Base58 {
      * @param encoded string The Base58 encoded string
      * @returns The hexadecimal representation of the data
      */
-    public static decode(encoded: string): string {
+    public static decode (encoded: string): string {
         return decode(encoded);
     }
 
@@ -63,7 +63,7 @@ export class Base58 {
      * @param decoded string the hexadecimal encoded string
      * @returns The Base58 representation of the data
      */
-    public static encode(decoded: string): string {
+    public static encode (decoded: string): string {
         return encode(decoded);
     }
 }
@@ -71,7 +71,7 @@ export class Base58 {
 /**
  * @ignore
  */
-function binToHex(bin: Uint8Array): string {
+function binToHex (bin: Uint8Array): string {
     const out: string[] = [];
 
     for (const b of bin) {
@@ -84,7 +84,7 @@ function binToHex(bin: Uint8Array): string {
 /**
  * @ignore
  */
-function binToString(bin: Uint8Array): string {
+function binToString (bin: Uint8Array): string {
     const out: string[] = [];
 
     for (const b of bin) {
@@ -97,7 +97,7 @@ function binToString(bin: Uint8Array): string {
 /**
  * @ignore
  */
-function decode(encStr: string): string {
+function decode (encStr: string): string {
     const enc = stringToBin(encStr);
     if (enc.length === 0) {
         return '';
@@ -128,7 +128,7 @@ function decode(encStr: string): string {
 /**
  * @ignore
  */
-function decodeBlock(data: Uint8Array, buf: Uint8Array, index: number) {
+function decodeBlock (data: Uint8Array, buf: Uint8Array, index: number) {
     if (data.length < 1 || data.length > fullEncodedBlockSize) {
         throw new Error('Invalid block length: ' + data.length);
     }
@@ -161,7 +161,7 @@ function decodeBlock(data: Uint8Array, buf: Uint8Array, index: number) {
 /**
  * @ignore
  */
-function encode(hex: string): string {
+function encode (hex: string): string {
     const data = hexToBin(hex);
     if (data.length === 0) {
         return '';
@@ -193,7 +193,7 @@ function encode(hex: string): string {
 /**
  * @ignore
  */
-function encodeBlock(data: Uint8Array, buf: Uint8Array, index: number): Uint8Array {
+function encodeBlock (data: Uint8Array, buf: Uint8Array, index: number): Uint8Array {
     if (data.length < 1 || data.length > fullEncodedBlockSize) {
         throw new Error('Invalid block length: ' + data.length);
     }
@@ -212,7 +212,7 @@ function encodeBlock(data: Uint8Array, buf: Uint8Array, index: number): Uint8Arr
 /**
  * @ignore
  */
-function hexToBin(hex: string): Uint8Array {
+function hexToBin (hex: string): Uint8Array {
     if (hex.length % 2 !== 0) {
         throw new Error('Hex string has invalid length!');
     }
@@ -226,7 +226,7 @@ function hexToBin(hex: string): Uint8Array {
 /**
  * @ignore
  */
-function stringToBin(str: string): Uint8Array {
+function stringToBin (str: string): Uint8Array {
     const res = new Uint8Array(str.length);
     for (let i = 0; i < str.length; i++) {
         res[i] = str.charCodeAt(i);
@@ -237,7 +237,7 @@ function stringToBin(str: string): Uint8Array {
 /**
  * @ignore
  */
-function uint8BeTo64(data: Uint8Array): BigInteger.BigInteger {
+function uint8BeTo64 (data: Uint8Array): BigInteger.BigInteger {
     if (data.length < 1 || data.length > 8) {
         throw new Error('Invalid input length');
     }
@@ -245,32 +245,32 @@ function uint8BeTo64(data: Uint8Array): BigInteger.BigInteger {
     const twoPow8 = BigInteger(2).pow(8);
     let i = 0;
     switch (9 - data.length) {
-        case 1:
-            res = res.add(data[i++]);
+    case 1:
+        res = res.add(data[i++]);
         /* falls through */
-        case 2:
-            res = res.multiply(twoPow8).add(data[i++]);
+    case 2:
+        res = res.multiply(twoPow8).add(data[i++]);
         /* falls through */
-        case 3:
-            res = res.multiply(twoPow8).add(data[i++]);
+    case 3:
+        res = res.multiply(twoPow8).add(data[i++]);
         /* falls through */
-        case 4:
-            res = res.multiply(twoPow8).add(data[i++]);
+    case 4:
+        res = res.multiply(twoPow8).add(data[i++]);
         /* falls through */
-        case 5:
-            res = res.multiply(twoPow8).add(data[i++]);
+    case 5:
+        res = res.multiply(twoPow8).add(data[i++]);
         /* falls through */
-        case 6:
-            res = res.multiply(twoPow8).add(data[i++]);
+    case 6:
+        res = res.multiply(twoPow8).add(data[i++]);
         /* falls through */
-        case 7:
-            res = res.multiply(twoPow8).add(data[i++]);
+    case 7:
+        res = res.multiply(twoPow8).add(data[i++]);
         /* falls through */
-        case 8:
-            res = res.multiply(twoPow8).add(data[i++]);
-            break;
-        default:
-            throw new Error('Impossible condition');
+    case 8:
+        res = res.multiply(twoPow8).add(data[i++]);
+        break;
+    default:
+        throw new Error('Impossible condition');
     }
     return res;
 }
@@ -278,7 +278,7 @@ function uint8BeTo64(data: Uint8Array): BigInteger.BigInteger {
 /**
  * @ignore
  */
-function uint64To8be(num: BigInteger.BigInteger, size: number): Uint8Array {
+function uint64To8be (num: BigInteger.BigInteger, size: number): Uint8Array {
     const res = new Uint8Array(size);
     if (size < 1 || size > 8) {
         throw new Error('Invalid input length');
