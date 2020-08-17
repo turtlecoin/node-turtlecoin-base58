@@ -1,3 +1,0 @@
-var typedoc = typedoc || {};
-            typedoc.search = typedoc.search || {};
-            typedoc.search.data = {"kinds":{"128":"Class","2048":"Method"},"rows":[{"id":0,"kind":128,"name":"Base58","url":"classes/base58.html","classes":"tsd-kind-class"},{"id":1,"kind":2048,"name":"decode","url":"classes/base58.html#decode","classes":"tsd-kind-method tsd-parent-kind-class tsd-is-static","parent":"Base58"},{"id":2,"kind":2048,"name":"encode","url":"classes/base58.html#encode","classes":"tsd-kind-method tsd-parent-kind-class tsd-is-static","parent":"Base58"}]};
