@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2018, MyMonero.com
-// Copyright (c) 2018-2020, The TurtleCoin Developers
+// Copyright (c) 2018-2021, The TurtleCoin Developers
 //
 // Please see the included LICENSE file for more information.
 
@@ -245,32 +245,32 @@ function uint8BeTo64 (data: Uint8Array): BigInteger.BigInteger {
     const twoPow8 = BigInteger(2).pow(8);
     let i = 0;
     switch (9 - data.length) {
-    case 1:
-        res = res.add(data[i++]);
+        case 1:
+            res = res.add(data[i++]);
         /* falls through */
-    case 2:
-        res = res.multiply(twoPow8).add(data[i++]);
+        case 2:
+            res = res.multiply(twoPow8).add(data[i++]);
         /* falls through */
-    case 3:
-        res = res.multiply(twoPow8).add(data[i++]);
+        case 3:
+            res = res.multiply(twoPow8).add(data[i++]);
         /* falls through */
-    case 4:
-        res = res.multiply(twoPow8).add(data[i++]);
+        case 4:
+            res = res.multiply(twoPow8).add(data[i++]);
         /* falls through */
-    case 5:
-        res = res.multiply(twoPow8).add(data[i++]);
+        case 5:
+            res = res.multiply(twoPow8).add(data[i++]);
         /* falls through */
-    case 6:
-        res = res.multiply(twoPow8).add(data[i++]);
+        case 6:
+            res = res.multiply(twoPow8).add(data[i++]);
         /* falls through */
-    case 7:
-        res = res.multiply(twoPow8).add(data[i++]);
+        case 7:
+            res = res.multiply(twoPow8).add(data[i++]);
         /* falls through */
-    case 8:
-        res = res.multiply(twoPow8).add(data[i++]);
-        break;
-    default:
-        throw new Error('Impossible condition');
+        case 8:
+            res = res.multiply(twoPow8).add(data[i++]);
+            break;
+        default:
+            throw new Error('Impossible condition');
     }
     return res;
 }
