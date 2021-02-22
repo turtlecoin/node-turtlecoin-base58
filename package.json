@@ -1,6 +1,6 @@
 {
   "name": "@turtlecoin/base58",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "description": "TurtleCoin Base58",
   "types": "dist/base58.d.ts",
   "main": "dist/base58.js",
